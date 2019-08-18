@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration 
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<!-- 引入外部文件的配置 -->
+	<properties resource="db.properties"></properties>
+
+	<!-- 自动映射 
+		 autoMappingBehavior
+		 FULL:完全自动映射
+		 NONE:取消自动映射
+	-->
+	<settings>
+		<setting name="autoMappingBehavior" value="FULL" />
+	</settings>
+
+	<!-- 取别名 role -->
+	<typeAliases>
+		<!-- <typeAlias type="pojo.Role" alias="role"/> -->
+		<!-- 可以映射该包下所有类的别名,所有的类名都可以以小写的方式作为别名 -->
+		<package name="pojo" />
+
+	</typeAliases>
+	<!-- 配置数据库环境 -->
+	<environments default="development">
+		<environment id="development">
+			<!-- 事务管理 -->
+			<transactionManager type="JDBC"></transactionManager>
+			<!--配置数据源 mybatis自带池化的技术 -->
+			<dataSource type="POOLED">
+				<property name="driver" value="${jdbc.driver}" />
+				<property name="url" value="${jdbc.url}?characterEncoding=utf-8" />
+				<property name="username" value="${jdbc.username}" />
+				<property name="password" value="${jdbc.password}" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	<!-- 映射器配置的 -->
+	<mappers>
+		<!-- 映射器的注入 -->
+		<mapper resource="mapper/UserMapper.xml" />
+		<mapper resource="mapper/UserTicket.xml" />
+		
+	</mappers>
+
+</configuration>
+
+
+
+
+
+
+
+
+
+
+

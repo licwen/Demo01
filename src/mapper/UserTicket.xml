@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="mapper.UserTicket">
+  	<resultMap type="User" id="ticketResult">
+	<id property="id" column="id"/>
+	<result property="name" column="name"/>
+	<result property="pwd" column="pwd"/>
+	<result property="age" column="age"/>
+	<result property="sex" column="sex"/>
+	<result property="tel" column="tel"/>
+	<result property="point" column="point"/>
+	<result property="remark" column="remark"/>
+	
+	<collection ofType="Ticket" property="ticketList">
+		<id property="id" column="tid"/>
+		<result property="address" column="address"/>
+		<result property="price" column="price"/>
+		<result property="uid" column="uid"/>
+	</collection>
+  	</resultMap>
+  	
+  	<select id="findUserWithTicket" resultMap="ticketResult">
+  		select u.*,t.id tid,t.address,t.price,t.uid
+  		from users u,ticket t
+  		where u.id=t.uid and u.id=#{id}
+  	</select>
+  </mapper>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="mapper.IUserMapper">
+  		<!-- 添加用户 -->
+  		<insert id="addUser" parameterType="Integer" useGeneratedKeys="true" keyProperty="id">
+  			insert into users(name,pwd,age,sex,tel,remark) value(#{name},#{pwd},#{age},#{sex},#{tel},#{remark})
+  		</insert>
+  		
+  		<!-- 查询用户 -->
+  		<select id="selectUserById" resultType="user" >
+  			select * from users
+  			<where>
+  				and id=#{id}
+  			</where>
+  		</select>
+  		
+  		<!-- 删除用户 -->
+  		<delete id="deleteUserById" parameterType="Integer">
+  			delete from users
+  			<where>
+  				and id=#{id}
+  			</where>
+  		</delete>
+  </mapper>

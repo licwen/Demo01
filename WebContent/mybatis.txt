@@ -1,0 +1,38 @@
+mybatis: 基于xml和注解进行实体映射的关系的操作,(crud,高级映射,存储过程的)
+         orm的映射,半自动化的轻量级框架
+         
+orm:object releation mapping  对象关系映射       
+ 
+mybatis-config.xml:核心配置文件 
+                   1 配置数据源(环境)
+                   2 取别名
+                   3 引入外部文件的配置
+                   
+SqlSessionFactoryBuilder:是专门建立SqlSessionFactory的一个工厂类对象
+                                                   执行一次结束
+                         bulid()                            
+                                                      
+SqlSessionFactory:相当于数据库的连接池对象,创建SqlSession对象
+                   openSession(),得到SqlSession
+
+SqlSession : 相当于数据库的connection,专门去操作sql语句      
+
+通常需要有一些映射的接口(操作数据库的方法)
+
+映射器(xxxmapper.xml):专有的映射的配置来映射实体类的sql语句,以达到数据库的操作
+
+	http://oracleoaec.gensee.com/webcast/site/vod/play-2da7a42bc00343dba962e49a1e9e3d59  复制链接
+	
+虽然基于xml和注解都能实现映射的效果,有时候注解比较方便
+但是如果sql语句过于繁琐的话,不建议使用注解的方式,
+还是使用标准的mapper的接口的方式	
+
+#{}:? sql的注入 
+${}:表示字符串的拼接
+
+动态sql:映射文件的配置标签和动态(逻辑处理)标签结合sql语句    拼接形成强大功能的映射语句
+
+动态标签:if / choose / when otherwise / where / foreach / set / trim...
+	
+	
+	
